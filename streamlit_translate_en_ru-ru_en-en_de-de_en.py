@@ -90,7 +90,7 @@ if result1:
 
 model_en_de = load_model_en_de()
 
-result2 = st.text_input('Geben Sie den englischen Text ein, um ihn ins Russische zu übersetzen, um ihn ins Deutsche zu übersetzen:')
+result2 = st.text_input('Geben Sie den Englischen Text ein, um ihn ins Deutsche zu übersetzen:')
 
 if result2:
     input = result2
@@ -104,7 +104,7 @@ if result2:
 
 model_de_en = load_model_de_en()
 
-result3 = st.text_input('Enter text in English for translate in Deutsche:')
+result3 = st.text_input('Enter text in Deutsche for translate in English:')
 
 if result3:
     input = result3
