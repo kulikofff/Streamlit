@@ -27,12 +27,17 @@ st.sidebar.info(
     This app is Open Source dashboard by AVK.
     """
 )
-st.sidebar.info("Feel free to collaborate and comment on the work. The github link can not be found:) ")
+st.sidebar.info("Feel free to collaborate and comment on the work. The github - https://github.com/kulikofff/Streamlit ")
 
 mname_en_ru = "facebook/wmt19-en-ru"
 mname_ru_en = "facebook/wmt19-ru-en"
+mname_en_de = "facebook/wmt19-en-de"
+mname_de_en = "facebook/wmt19-de-en"
 tokenizer_en_ru = FSMTTokenizer.from_pretrained(mname_en_ru)
 tokenizer_ru_en = FSMTTokenizer.from_pretrained(mname_ru_en)
+tokenizer_en_de = FSMTTokenizer.from_pretrained(mname_en_de)
+tokenizer_de_en = FSMTTokenizer.from_pretrained(mname_de_en)
+
 
 def load_model_en_ru():
     model = FSMTForConditionalGeneration.from_pretrained(mname_en_ru)
@@ -42,6 +47,17 @@ def load_model_ru_en():
     model = FSMTForConditionalGeneration.from_pretrained(mname_ru_en)
     return model
 
+def load_model_en_de():
+    model = FSMTForConditionalGeneration.from_pretrained(mname_en_de)
+    return model
+
+def load_model_de_en():
+    model = FSMTForConditionalGeneration.from_pretrained(mname_de_en)
+    return model
+
+
+
+# EN -> RU
 
 model_en_ru = load_model_en_ru()
 
@@ -55,6 +71,8 @@ if result:
     st.write('**Результаты перевода на русский:**')
     st.write(decoded)
 
+# RU -> EN
+
 model_ru_en = load_model_ru_en()
 
 result1 = st.text_input('Введите текст на русском:')
@@ -64,5 +82,34 @@ if result1:
     input_ids = tokenizer_ru_en.encode(input, return_tensors="pt")
     outputs = model_ru_en.generate(input_ids)
     decoded = tokenizer_ru_en.decode(outputs[0], skip_special_tokens=True)
+    st.write('**Результаты перевода на английский:**')
+    st.write(decoded)
+
+
+# EN -> DE
+
+model_en_de = load_model_en_de()
+
+result2 = st.text_input('Введите текст на английском:')
+
+if result2:
+    input = result2
+    input_ids = tokenizer_en_de.encode(input, return_tensors="pt")
+    outputs = model_en_de.generate(input_ids)
+    decoded = tokenizer_en_de.decode(outputs[0], skip_special_tokens=True)
+    st.write('**Результаты перевода на немецкий:**')
+    st.write(decoded)
+
+# DE -> EN
+
+model_de_en = load_model_de_en()
+
+result3 = st.text_input('Введите текст на немецком:')
+
+if result3:
+    input = result3
+    input_ids = tokenizer_de_en.encode(input, return_tensors="pt")
+    outputs = model_de_en.generate(input_ids)
+    decoded = tokenizer_de_en.decode(outputs[0], skip_special_tokens=True)
     st.write('**Результаты перевода на английский:**')
     st.write(decoded)
