@@ -75,14 +75,14 @@ if result:
 
 model_ru_en = load_model_ru_en()
 
-result1 = st.text_input('Введите текст на русском:')
+result1 = st.text_input('Enter text in Russian:')
 
 if result1:
     input = result1
     input_ids = tokenizer_ru_en.encode(input, return_tensors="pt")
     outputs = model_ru_en.generate(input_ids)
     decoded = tokenizer_ru_en.decode(outputs[0], skip_special_tokens=True)
-    st.write('**Результаты перевода на английский:**')
+    st.write('**The translate result in English:**')
     st.write(decoded)
 
 
@@ -90,26 +90,26 @@ if result1:
 
 model_en_de = load_model_en_de()
 
-result2 = st.text_input('Введите текст на английском для перевода на немецкий:')
+result2 = st.text_input('Geben Sie den Text in Deutsch ein:')
 
 if result2:
     input = result2
     input_ids = tokenizer_en_de.encode(input, return_tensors="pt")
     outputs = model_en_de.generate(input_ids)
     decoded = tokenizer_en_de.decode(outputs[0], skip_special_tokens=True)
-    st.write('**Результаты перевода на немецкий:**')
+    st.write('**Рergebnisse der deutschen Übersetzung:**')
     st.write(decoded)
 
 # DE -> EN
 
 model_de_en = load_model_de_en()
 
-result3 = st.text_input('Введите текст на немецком для перевода на английский:')
+result3 = st.text_input('Enter text in English for translate in Deutsche:')
 
 if result3:
     input = result3
     input_ids = tokenizer_de_en.encode(input, return_tensors="pt")
     outputs = model_de_en.generate(input_ids)
     decoded = tokenizer_de_en.decode(outputs[0], skip_special_tokens=True)
-    st.write('**Результаты перевода на английский:**')
+    st.write('**The translate result in English:**')
     st.write(decoded)
