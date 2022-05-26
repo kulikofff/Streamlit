@@ -90,7 +90,7 @@ if result1:
 
 model_en_de = load_model_en_de()
 
-result2 = st.text_input('Введите текст на английском:')
+result2 = st.text_input('Введите текст на английском для перевода на немецкий:')
 
 if result2:
     input = result2
@@ -104,7 +104,7 @@ if result2:
 
 model_de_en = load_model_de_en()
 
-result3 = st.text_input('Введите текст на немецком:')
+result3 = st.text_input('Введите текст на немецком для перевода на английский:')
 
 if result3:
     input = result3
