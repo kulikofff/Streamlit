@@ -61,7 +61,9 @@ def load_model_de_en():
 
 model_en_ru = load_model_en_ru()
 
-result = st.text_input('Введите текст на английском для перевода на русский:')
+sequence_input = "test"
+result = st.text_area("Введите текст на английском для перевода на русский:", sequence_input, height=250)
+#result = st.text_input('Введите текст на английском для перевода на русский:', max_chars=250)
 
 if result:
     input = result
