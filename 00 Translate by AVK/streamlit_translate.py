@@ -8,11 +8,13 @@ import json
 #pip install transformers
 #pip install sacremoses
 
-import io
-from PIL import Image
-from tensorflow.keras.applications import EfficientNetB0
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.efficientnet import preprocess_input, decode_predictions
+
+#import io
+#from PIL import Image
+#from tensorflow.keras.applications import EfficientNetB0
+#from tensorflow.keras.preprocessing import image
+#from tensorflow.keras.applications.efficientnet import preprocess_input, decode_predictions
+
 
 from transformers import FSMTForConditionalGeneration, FSMTTokenizer
 mname = "facebook/wmt19-en-ru"
